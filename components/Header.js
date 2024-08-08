@@ -5,7 +5,7 @@ import { View, Text, Button } from "react-native"
 export default function Header() {
     return (
         <View>
-            <Pressable style={styles.addButton}>
+            <Pressable style={styles.addButton} onPress={() => {console.log("Button(+) press!")}}>
                 <Text style={styles.text}>+</Text>
             </Pressable>
             <View style={styles.block}>
