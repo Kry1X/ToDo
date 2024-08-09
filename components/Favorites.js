@@ -1,8 +1,12 @@
-import { StyleSheet, View } from "react-native-web"
-export default function Favorites() {
+import { StyleSheet, View, FlatList } from "react-native-web"
+import Element from "./ListElement"
+import { useState } from "react"
+
+export default function Favorites({list}) {
+
     return (
         <View>
-
+            <FlatList data={list.filter((el) => (el.fav))} renderItem={({item}) => <Element data={item} />} />
         </View>
     )
 }
@@ -10,3 +14,9 @@ export default function Favorites() {
 const styles= StyleSheet.create({
     
 })
+
+
+{/* <FlatList data={listOfItems} renderItem={({item}) => (
+          <Element data={item}/>
+        )} /> */}
+// () => {()}
