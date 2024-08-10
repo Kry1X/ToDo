@@ -5,13 +5,22 @@ import Element from './components/ListElement';
 import FormCreate from './components/FormCreate';
 import Settings from './components/Settings';
 import Favorites from './components/Favorites';
-
+/* 
+ToDo: Надо протестировать FormCreate, Header.
+      Оформелние инетрфейса
+*/
 export default function App() {
-  const [listOfItems, setListOfItems] = useState([]);  // {text:"", fav:t|f, key: Math.random().toString(36).substring(7)} 
+  const [listOfItems, setListOfItems] = useState([
+    {text:"A", fav:true, key: Math.random().toString(36).substring(7)},
+    {text:"B", fav:true, key: Math.random().toString(36).substring(7)},
+    {text:"C", fav:false, key: Math.random().toString(36).substring(7)}  
+  ]);  // {text:"", fav:t|f, key: Math.random().toString(36).substring(7)} 
 
   const addItem = (data) => {
+    console.log(listOfItems)
     setListOfItems((list) => [
-      { text: data.text, fav: data.fav, key: Math.random().toString(36).substring(7) },
+      // { text: data.text, fav: data.fav, key: Math.random().toString(36).substring(7) },
+      { text: data.text, fav: false, key: Math.random().toString(36).substring(7) },
       ...list,
     ]);
   };
@@ -34,19 +43,9 @@ export default function App() {
 
   return (
     <View>
-      <Pressable
-        style={{ padding: 100 }}
-        onPress={() => {
-          addItem({ text: "TEST", fav: true});
-          console.log("Add=>", listOfItems);
-          changeItem("1", { text: "CHTEST", fav: false });
-          console.log("Cng=>", listOfItems);
-          deleteItem("1");
-          console.log("Del=>", listOfItems);
-        }}
-      >
-        <Text>Press me!</Text>
-      </Pressable>
+      <FormCreate addHandler={addItem} />
+      {/* <Settings /> */}
+      {/* <Favorites list={listOfItems} /> */}
     </View>
   );
 };
