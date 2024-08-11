@@ -42,11 +42,12 @@ const styles = StyleSheet.create({
     },
     but: {
         borderBottomWidth: 1,
-        borderColor: 'black',
-        padding: 100,
+        borderColor: '#D9D9D9',
         marginVertical: 30,
         marginHorizontal: '20%',
-        width: '60%', 
-        backgroundColor: 'black'
+        width: 90, 
+        height: 30,
+        backgroundColor: 'black',
+        borderRadius: 5
     }
 });
