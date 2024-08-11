@@ -5,24 +5,21 @@ import Element from './components/ListElement';
 import FormCreate from './components/FormCreate';
 import Settings from './components/Settings';
 import Favorites from './components/Favorites';
+import ToggleButton from './components/ToogleBut';
 /* 
-ToDo: Надо протестировать FormCreate, Header.
+ToDo: Надо протестировать Header.(Bottom Tabs Navigator, https://reactnavigation.org/docs/bottom-tab-navigator)
       Оформелние инетрфейса
 */
 export default function App() {
-  const [listOfItems, setListOfItems] = useState([
-    {text:"A", fav:true, key: Math.random().toString(36).substring(7)},
-    {text:"B", fav:true, key: Math.random().toString(36).substring(7)},
-    {text:"C", fav:false, key: Math.random().toString(36).substring(7)}  
-  ]);  // {text:"", fav:t|f, key: Math.random().toString(36).substring(7)} 
+  const [listOfItems, setListOfItems] = useState([]);  // {text:"", fav:t|f, key: Math.random().toString(36).substring(7)} 
 
   const addItem = (data) => {
-    console.log(listOfItems)
     setListOfItems((list) => [
       // { text: data.text, fav: data.fav, key: Math.random().toString(36).substring(7) },
-      { text: data.text, fav: false, key: Math.random().toString(36).substring(7) },
+      { text: data.text, fav: data.fav, key: Math.random().toString(36).substring(7) },
       ...list,
     ]);
+    console.log(listOfItems)
   };
 
   const deleteItem = (key) => {
@@ -43,7 +40,7 @@ export default function App() {
 
   return (
     <View>
-      <FormCreate addHandler={addItem} />
+      {/* <FormCreate addHandler={addItem} /> */}
       {/* <Settings /> */}
       {/* <Favorites list={listOfItems} /> */}
     </View>
