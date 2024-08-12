@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { StyleSheet, TextInput, Text, Pressable, View } from 'react-native';
 
-export default function Form({addHandler}) {
+export default function Form({ route }) {
     const [data, setValue] = useState({text: "", fav: false});
-
-    // let m = item.split("; ")
-    // console.log(m[1])
-    // setValue({text: m[0], fav: m[1] == "0" ? false : true})
+    const {addItem} = route.params;
+    
     const onChangeText = (item) => {
         setValue(prevState => ({...prevState, text: item}));
     };
@@ -24,7 +22,7 @@ export default function Form({addHandler}) {
                 <Text style={{color: 'white'}}>Favorite</Text>
             </Pressable>
             <TextInput style={styles.input} onChangeText={onChangeText} placeholder='Ведите содержимое задачи...'/>
-            <Pressable onPress={() => addHandler(data)} style={styles.but}>
+            <Pressable onPress={() => addItem(data)} style={styles.but}>
                 <Text style={{fontWeight: 'bold', color: 'white', textAlign: 'center'}}>Добавить</Text>
             </Pressable>
         </View>
@@ -51,3 +49,6 @@ const styles = StyleSheet.create({
         borderRadius: 5
     }
 });
+// let m = item.split("; ")
+// console.log(m[1])
+// setValue({text: m[0], fav: m[1] == "0" ? false : true})

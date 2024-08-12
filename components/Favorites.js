@@ -2,11 +2,12 @@ import { StyleSheet, View, FlatList, Text} from "react-native"
 import Element from "./ListElement"
 import { useState } from "react"
 
-export default function Favorites({list}) {
+export default function Favorites({ route }) {
+    const { listOfItems } = route.params;
 
     return (
         <View>
-            <FlatList data={list.filter((el) => (el.fav))} renderItem={({item}) => (<Element data={item}/>)} />
+            <FlatList data={listOfItems.filter((el) => (el.fav))} renderItem={({item}) => (<Element data={item}/>)} />
         </View>
     )
 }
