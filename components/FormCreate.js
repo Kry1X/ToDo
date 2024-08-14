@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, TextInput, Text, Pressable, View } from 'react-native';
 import { useAppContext } from '../AppContext';
-// Почитать: https://reactnavigation.org/docs/state-persistence/
+
 export default function Form({ route }) {
     const [data, setValue] = useState({ text: "", fav: false });
     const { addItem } = useAppContext();
@@ -18,7 +18,7 @@ export default function Form({ route }) {
     return (
         <View>
             <Pressable style={styles.but} onPress={onChangeFavorite}>
-                <Text style={{ color: 'white' }}>Favorite</Text>
+                <Text style={styles.text}>Favorite</Text>
             </Pressable>
             <TextInput 
                 style={styles.input} 
@@ -26,7 +26,7 @@ export default function Form({ route }) {
                 placeholder='Введите содержимое задачи...' 
             />
             <Pressable onPress={() => addItem(data)} style={styles.but}>
-                <Text style={{ fontWeight: 'bold', color: 'white', textAlign: 'center' }}>Добавить</Text>
+                <Text style={styles.text}>Добавить</Text>
             </Pressable>
         </View>
     );
@@ -34,22 +34,30 @@ export default function Form({ route }) {
 
 const styles = StyleSheet.create({
     input: {
-        borderBottomWidth: 1,
-        borderColor: 'black',
-        padding: 10,
-        marginVertical: 30,
-        marginHorizontal: '20%',
-        width: '60%'
+        marginLeft: 8,
+        paddingLeft: 8,
+        width: 335,
+        height: 129,
+        borderRadius: 14,
+        backgroundColor: "#D9D9D9",
+        borderStyle: 'solid',
+        borderWidth: 2,
+        borderColor: "rgba(0, 0, 0, 1.0)"
     },
     but: {
-        borderBottomWidth: 1,
-        borderColor: '#D9D9D9',
-        marginVertical: 30,
-        marginHorizontal: '20%',
-        width: 90, 
-        height: 30,
-        backgroundColor: 'black',
-        borderRadius: 5
+        padding: 20,
+        margin: 10,
+        width: '40%',
+        height: 75,
+        backgroundColor: "#000000",
+        borderStyle: 'solid',
+        borderWidth: 2,
+        borderRadius: 14
+    },
+    text: {
+        fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center' 
     }
 });
 // let m = item.split("; ")
