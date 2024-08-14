@@ -1,9 +1,9 @@
 import { StyleSheet, FlatList, View} from "react-native";
 import Element from "./ListElement";
-import { useState } from "react";
+import { useAppContext } from "../AppContext";
 
 export default function MainList({route}) {
-    const {listOfItems} = route.params;
+    const {listOfItems} = useAppContext();
     console.log(listOfItems)
     return (
         <View>

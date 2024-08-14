@@ -1,29 +1,32 @@
 import { useState } from 'react';
 import { StyleSheet, TextInput, Text, Pressable, View } from 'react-native';
-
+import { useAppContext } from '../AppContext';
+// Почитать: https://reactnavigation.org/docs/state-persistence/
 export default function Form({ route }) {
-    const [data, setValue] = useState({text: "", fav: false});
-    const {addItem} = route.params;
-    
+    const [data, setValue] = useState({ text: "", fav: false });
+    const { addItem } = useAppContext();
+
     const onChangeText = (item) => {
-        setValue(prevState => ({...prevState, text: item}));
+        setValue(prevState => ({ ...prevState, text: item }));
     };
+
     const onChangeFavorite = () => {
-        setValue(prevState => {
-            const newFav  = !prevState.fav;
-            console.log(newFav); 
-            return { ...prevState, fav: newFav};
-        });
+        console.log("C_FAV")
+        setValue(prevState => ({ ...prevState, fav: !prevState.fav }));
     };
 
     return (
         <View>
             <Pressable style={styles.but} onPress={onChangeFavorite}>
-                <Text style={{color: 'white'}}>Favorite</Text>
+                <Text style={{ color: 'white' }}>Favorite</Text>
             </Pressable>
-            <TextInput style={styles.input} onChangeText={onChangeText} placeholder='Ведите содержимое задачи...'/>
+            <TextInput 
+                style={styles.input} 
+                onChangeText={onChangeText} 
+                placeholder='Введите содержимое задачи...' 
+            />
             <Pressable onPress={() => addItem(data)} style={styles.but}>
-                <Text style={{fontWeight: 'bold', color: 'white', textAlign: 'center'}}>Добавить</Text>
+                <Text style={{ fontWeight: 'bold', color: 'white', textAlign: 'center' }}>Добавить</Text>
             </Pressable>
         </View>
     );
